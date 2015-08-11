@@ -13,10 +13,15 @@ if(NOT _CRAYPE_ROOT)
   message(FATAL_ERROR "Neither the ASYNCPE_DIR or CRAYPE_DIR environment variable are defined but the CrayPrgEnv toolchain module requires one.  This usually means that the necessary PrgEnv-* module is not loaded")
 endif()
 
+set(_TAU_HOME "$ENV{TAU_HOME}")
+if(NOT _TAU_HOME)
+  message(FATAL_ERROR "Please set TAU_HOME environment variable to the directory containing your TAU bin and lib folders")
+endif()
+
 # Explicitly use the cray compiler wrappers from the PrgEnv-* module
-set(CMAKE_C_COMPILER       "/p/home/jlinford/workspace/CART/tau2/craycnl/bin/tau_cc.sh")
-set(CMAKE_CXX_COMPILER     "/p/home/jlinford/workspace/CART/tau2/craycnl/bin/tau_cxx.sh")
-set(CMAKE_Fortran_COMPILER "/p/home/jlinford/workspace/CART/tau2/craycnl/bin/tau_f90.sh")
+set(CMAKE_C_COMPILER       "${TAU_HOME}/bin/tau_cc.sh")
+set(CMAKE_CXX_COMPILER     "${TAU_HOME}/bin/tau_cxx.sh")
+set(CMAKE_Fortran_COMPILER "${TAU_HOME}/bin/tau_f90.sh")
 
 # These shouldn't really be necessary since the Cray compiler drivers pay
 # attention to the environment variables but this will force the options
