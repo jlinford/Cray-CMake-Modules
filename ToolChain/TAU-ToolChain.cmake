@@ -19,9 +19,9 @@ if(NOT _TAU_HOME)
 endif()
 
 # Explicitly use the cray compiler wrappers from the PrgEnv-* module
-set(CMAKE_C_COMPILER       "${TAU_HOME}/bin/tau_cc.sh")
-set(CMAKE_CXX_COMPILER     "${TAU_HOME}/bin/tau_cxx.sh")
-set(CMAKE_Fortran_COMPILER "${TAU_HOME}/bin/tau_f90.sh")
+set(CMAKE_C_COMPILER       "${_TAU_HOME}/bin/tau_cc.sh")
+set(CMAKE_CXX_COMPILER     "${_TAU_HOME}/bin/tau_cxx.sh")
+set(CMAKE_Fortran_COMPILER "${_TAU_HOME}/bin/tau_f90.sh")
 
 # These shouldn't really be necessary since the Cray compiler drivers pay
 # attention to the environment variables but this will force the options
